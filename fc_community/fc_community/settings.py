@@ -24,9 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*l68kezn0n12f61ah(i$)r)@^v%4&j5+ojitar$d#np3ftvngd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# 프로그램을 배포할때는 DEBUG=False 로 설정 (배포 step1)
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# 본인의 유저네임을 적어서 배포를 한다. (배포 step2)
+ALLOWED_HOSTS = [
+    "yonghwanKim.pythonanywhere.com"
+]
 
 
 # Application definition
@@ -39,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'board',
-    'fcuser'
+    'fcuser',
+    'tag'
 ]
 
 MIDDLEWARE = [
@@ -121,6 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+# STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, "static"),
+# ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")  # (배포 step3)

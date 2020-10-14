@@ -9,6 +9,8 @@ class Board(models.Model):
     # on_delete => 현재 게시글을 작성하였는데 사용자가 정보가 db에서 삭제되면 사용자가 작성한 글도 삭제되는 방식.
     writer = models.ForeignKey("fcuser.Fcuser", on_delete=models.CASCADE,
                                verbose_name="작성자")
+
+    tags = models.ManyToManyField('tag.Tag', verbose_name="태그")
     registered_dttm = models.DateTimeField(
         auto_now_add=True, verbose_name="등록시간")
 
